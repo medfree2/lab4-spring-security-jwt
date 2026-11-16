@@ -35,48 +35,30 @@ Importer `postman/Lab4-Auth.postman_collection.json`, renseigner `baseUrl`, les 
 
 Les jetons expirent au bout de 15 minutes et peuvent être renouvelés durant les 5 dernières minutes via `POST /api/auth/refresh`. Pour permettre la révocation ciblée en production, ajouter un identifiant unique de jeton, conserver les identifiants révoqués jusqu’à leur expiration, et les contrôler lors du décodage. La rotation de la clé invalide tous les jetons signés par l’ancienne clé. Une échéance absolue ou des jetons de renouvellement rotatifs permettent de borner la durée d’une session.
 
-## Résultats d’exécution
+## Captures d’écran de l’exécution
 
-Le build Maven réussit sous Java 21. Newman valide 18 requêtes et 27 assertions contre le JAR avec H2 en mode MySQL. La configuration MySQL est fournie. Son exécution reste à vérifier. Les images sont générées à partir de la sortie réelle de Newman.
+Captures de la fenêtre du terminal affichant la sortie d’une nouvelle exécution Newman sur H2 en mode MySQL. Les 18 requêtes et les 27 assertions ont réussi. La vérification sur MySQL reste à faire.
 
-[Journal des tests](docs/newman.txt)
+### Inscription et connexion
 
-### Lecture anonyme
+![Sortie Newman dans le terminal, partie 1](docs/terminal-1.jpg)
 
-![Lecture anonyme](docs/execution-01.png)
+### Connexion et accès au catalogue
 
-### Inscription
+![Sortie Newman dans le terminal, partie 2](docs/terminal-2.jpg)
 
-![Inscription](docs/execution-02.png)
+### Droits de création et de suppression
 
-### Connexion utilisateur
+![Sortie Newman dans le terminal, partie 3](docs/terminal-3.jpg)
 
-![Connexion utilisateur](docs/execution-04.png)
+### Commandes et contrôle du propriétaire
 
-### Écriture interdite au client
+![Sortie Newman dans le terminal, partie 4](docs/terminal-4.jpg)
 
-![Écriture interdite au client](docs/execution-09.png)
+### Renouvellement et bilan des tests
 
-### Créer un produit comme manager
+![Sortie Newman dans le terminal, partie 5](docs/terminal-5.jpg)
 
-![Créer un produit comme manager](docs/execution-11.png)
+### Fin du récapitulatif Newman
 
-### Suppression interdite au manager
-
-![Suppression interdite au manager](docs/execution-12.png)
-
-### Créer sa commande
-
-![Créer sa commande](docs/execution-13.png)
-
-### Masquer la commande aux autres clients
-
-![Masquer la commande aux autres clients](docs/execution-15.png)
-
-### Supprimer la commande comme admin
-
-![Supprimer la commande comme admin](docs/execution-17.png)
-
-### Refuser un renouvellement prématuré
-
-![Refuser un renouvellement prématuré](docs/execution-18.png)
+![Sortie Newman dans le terminal, partie 6](docs/terminal-6.jpg)
