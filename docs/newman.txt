@@ -1,0 +1,104 @@
+newman
+
+Lab 4 — Authentification JWT
+
+→ Lecture anonyme
+  GET http://localhost:8085/api/products [401 Unauthorized, 418B, 28ms]
+  ✓  HTTP 401
+
+→ Inscription
+  POST http://localhost:8085/api/auth/register [201 Created, 472B, 316ms]
+  ✓  HTTP 201
+  ✓  Vérifier le résultat
+
+→ Inscription du second client
+  POST http://localhost:8085/api/auth/register [201 Created, 471B, 100ms]
+  ✓  HTTP 201
+
+→ Connexion utilisateur
+  POST http://localhost:8085/api/auth/login [200 OK, 640B, 145ms]
+  ✓  HTTP 200
+  ✓  Vérifier le résultat
+
+→ Connexion du second client
+  POST http://localhost:8085/api/auth/login [200 OK, 639B, 93ms]
+  ✓  HTTP 200
+  ✓  Vérifier le résultat
+
+→ Connexion administrateur
+  POST http://localhost:8085/api/auth/login [200 OK, 632B, 88ms]
+  ✓  HTTP 200
+  ✓  Vérifier le résultat
+
+→ Connexion manager
+  POST http://localhost:8085/api/auth/login [200 OK, 635B, 89ms]
+  ✓  HTTP 200
+  ✓  Vérifier le résultat
+
+→ Lecture du catalogue
+  GET http://localhost:8085/api/products [200 OK, 500B, 89ms]
+  ✓  HTTP 200
+
+→ Écriture interdite au client
+  POST http://localhost:8085/api/categories [403 Forbidden, 598B, 21ms]
+  ✓  HTTP 403
+
+→ Créer une catégorie
+  POST http://localhost:8085/api/categories [201 Created, 487B, 59ms]
+  ✓  HTTP 201
+  ✓  Vérifier le résultat
+
+→ Créer un produit comme manager
+  POST http://localhost:8085/api/products [201 Created, 507B, 47ms]
+  ✓  HTTP 201
+  ✓  Vérifier le résultat
+
+→ Suppression interdite au manager
+  DELETE http://localhost:8085/api/products/1 [403 Forbidden, 598B, 8ms]
+  ✓  HTTP 403
+
+→ Créer sa commande
+  POST http://localhost:8085/api/orders [201 Created, 571B, 56ms]
+  ✓  HTTP 201
+  ✓  Vérifier le résultat
+
+→ Lister ses commandes
+  GET http://localhost:8085/api/orders [200 OK, 615B, 29ms]
+  ✓  HTTP 200
+  ✓  Vérifier le résultat
+
+→ Masquer la commande aux autres clients
+  GET http://localhost:8085/api/orders/1 [404 Not Found, 552B, 37ms]
+  ✓  HTTP 404
+
+→ Lire la commande comme manager
+  GET http://localhost:8085/api/orders/1 [200 OK, 538B, 13ms]
+  ✓  HTTP 200
+
+→ Supprimer la commande comme admin
+  DELETE http://localhost:8085/api/orders/1 [204 No Content, 371B, 25ms]
+  ✓  HTTP 204
+
+→ Refuser un renouvellement prématuré
+  POST http://localhost:8085/api/auth/refresh [400 Bad Request, 564B, 10ms]
+  ✓  HTTP 400
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                18 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                18 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                27 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 1571ms                                     │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 1.79kB (approx)                           │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 69ms [min: 8ms, max: 316ms, s.d.: 70ms] │
+└────────────────────────────────────────────────────────────────┘
